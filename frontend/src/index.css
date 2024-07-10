@@ -1,4 +1,35 @@
-:root {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-image: radial-gradient(rgb(219, 117, 117) 10%, transparent 10%),
+    radial-gradient(rgb(219, 117, 117) 10%, transparent 10%);
+  background-position: 0px 0px, 5px 5px;
+  background-size: 10px 10px;
+  background-color: #1c1e25;
+}
+
+::-webkit-scrollbar {
+  cursor: pointer;
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  cursor: pointer;
+  background: #555;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #121212;
+  border-radius: 5px;
+}
+
+::-webkit-slider-thumb:hover {
+  background: #242424;
+}
+
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -65,4 +96,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
