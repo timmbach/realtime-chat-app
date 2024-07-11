@@ -43,7 +43,7 @@ export const SocketContextProvider = ({ children }: Props) => {
     //     userId: user?._id,
     //   },
     // });
-    const socket = io("http://localhost:8000", {
+    const socket = io("https://realtime-chat-app-my39.onrender.com", {
       query: {
         userId: user?._id,
       },
