@@ -1,14 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useSocket } from "../../context/SocketContext";
 import useConversation from "../../store/useConversation";
-import { IConversation } from "../../types/conversation.model";
+// import { IConversation } from "../../types/conversation.model";
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 type Props = {
-  conversation: IConversation;
+  conversation: any;
 };
 
 // eslint-disable-next-line no-empty-pattern
 function Conversation({ conversation }: Props) {
   const { selectedConversation, setSelectedConversation } = useConversation();
+  const { onlineUsers } = useSocket();
+  const isOnline = onlineUsers?.includes(conversation?._id);
 
   const isSelected = selectedConversation?._id === conversation._id;
   return (
@@ -19,7 +23,7 @@ function Conversation({ conversation }: Props) {
         }`}
         onClick={() => setSelectedConversation(conversation)}
       >
-        <div className="avatar online">
+        <div className={`${isOnline ? "avatar online" : ""}`}>
           <div className="w-12 rounded-full">
             <img src={conversation.profilePic} alt="user avatar" />
           </div>

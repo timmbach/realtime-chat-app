@@ -3,6 +3,7 @@ import useGetMessages from "../../hooks/useGetMessages";
 import { IMessage } from "../../types/message.model";
 import Message from "./Message";
 import MessageSkeleton from "./MessageSkeleton";
+import useListenMessages from "../../hooks/useListenMessages";
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 type Props = {};
@@ -10,6 +11,7 @@ type Props = {};
 // eslint-disable-next-line no-empty-pattern
 const Messages = ({}: Props) => {
   const { messages, loading } = useGetMessages();
+  useListenMessages();
 
   const lastMessageRef = useRef<HTMLDivElement | null>(null);
 

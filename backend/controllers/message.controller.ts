@@ -3,6 +3,7 @@ import { Express, Request, Response } from "express";
 import User from "../models/user.model";
 import Conversation from "../models/conversation.model";
 import Message from "../models/message.model";
+import { getReceiverSocketId, io } from "../socket/socket";
 
 export const sendMessage = async (req: Request, res: Response) => {
   try {
@@ -31,12 +32,16 @@ export const sendMessage = async (req: Request, res: Response) => {
       conversation.messages.push(newMessage._id);
     }
 
-    // SOCKET IO
-
     // await conversation.save();
     // await newMessage.save();
 
     await Promise.all([conversation.save(), newMessage.save()]);
+
+    // SOCKET IO
+    const receiverSocketId = getReceiverSocketId(receiverId);
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit("newMessage", newMessage);
+    }
 
     res.status(201).json(newMessage);
   } catch (error: any) {

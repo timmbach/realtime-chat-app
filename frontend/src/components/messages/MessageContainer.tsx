@@ -3,6 +3,7 @@ import MessageInput from "./MessageInput";
 import Messages from "./Messages";
 import useConversation from "../../store/useConversation";
 import { useEffect } from "react";
+import { useAuthContext } from "../../context/AuthContext";
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 type Props = {};
@@ -40,10 +41,11 @@ function MessageContainer({}: Props) {
 export default MessageContainer;
 
 const NoChatSelected = () => {
+  const { user } = useAuthContext();
   return (
     <div className="flex items-center justify-center w-full h-full">
       <div className="px-4 text-center sm:text-lg md:text-xl text-gray-200 font-semibold flex flex-col items-center gap-2">
-        <p>Welcome John Doe</p>
+        <p>Welcome {user?.fullName}</p>
         <p>Select someone to message</p>
         <TiMessage className="text-3xl md:text-6xl text-center" />
       </div>
