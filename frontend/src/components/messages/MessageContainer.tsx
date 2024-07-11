@@ -1,16 +1,23 @@
 import { TiMessage } from "react-icons/ti";
 import MessageInput from "./MessageInput";
 import Messages from "./Messages";
+import useConversation from "../../store/useConversation";
+import { useEffect } from "react";
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 type Props = {};
 
 // eslint-disable-next-line no-empty-pattern
 function MessageContainer({}: Props) {
-  const noChatSelected = true;
+  const { selectedConversation, setSelectedConversation } = useConversation();
+
+  useEffect(() => {
+    return () => setSelectedConversation(null);
+  }, [setSelectedConversation]);
+
   return (
     <div className="md:min-w-[450px] flex flex-col">
-      {noChatSelected ? (
+      {!selectedConversation ? (
         <NoChatSelected />
       ) : (
         <>
@@ -18,7 +25,7 @@ function MessageContainer({}: Props) {
           <div className="bg-slate-500 px-4 py-2 mb-2">
             <span className="label-text">To: </span>
             <span className="text-purple-900/80 font-bold text-sm">
-              John Doe
+              {selectedConversation.fullName}
             </span>
           </div>
 
