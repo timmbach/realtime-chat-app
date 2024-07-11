@@ -1,4 +1,4 @@
-import express, { Express, Request, Response } from "express";
+import express from "express";
 import { Server } from "socket.io";
 import http from "http";
 
@@ -19,7 +19,7 @@ export const getReceiverSocketId = (receiverId: string) => {
   return userSocketMap[receiverId];
 };
 
-io.on("connection", (socket) => {
+io.on("connection", (socket: any) => {
   console.log("user connected", socket.id);
   const userId = socket.handshake.query.userId;
 

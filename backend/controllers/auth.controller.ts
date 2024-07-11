@@ -3,7 +3,7 @@ import { Express, Request, Response } from "express";
 import User from "../models/user.model";
 import generateTokenAndSetCookie from "../utils/generateToken";
 
-export const signup = async (req: Request, res: Response) => {
+export const signup = async (req: any, res: Response) => {
   try {
     const { fullName, username, password, confirmPassword } = req.body;
 

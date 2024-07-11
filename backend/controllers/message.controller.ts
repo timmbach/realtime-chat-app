@@ -5,7 +5,7 @@ import Conversation from "../models/conversation.model";
 import Message from "../models/message.model";
 import { getReceiverSocketId, io } from "../socket/socket";
 
-export const sendMessage = async (req: Request, res: Response) => {
+export const sendMessage = async (req: any, res: Response) => {
   try {
     console.log("Message sent", req.params.id);
     const { message } = req.body;
@@ -50,7 +50,7 @@ export const sendMessage = async (req: Request, res: Response) => {
   }
 };
 
-export const getMessages = async (req: Request, res: Response) => {
+export const getMessages = async (req: any, res: Response) => {
   try {
     const { id: receiverId } = req.params;
     const senderId = req.user._id;

@@ -3,7 +3,7 @@ import { Express, Request, Response } from "express";
 import User from "../models/user.model";
 import generateTokenAndSetCookie from "../utils/generateToken";
 
-export const getUsers = async (req: Request, res: Response) => {
+export const getUsers = async (req: any, res: Response) => {
   try {
     const currentUserId = req.user._id;
 

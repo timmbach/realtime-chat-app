@@ -2,7 +2,7 @@ import jwt, { JwtPayload, Secret } from "jsonwebtoken";
 import { Express, NextFunction, Request, Response } from "express";
 import User from "../models/user.model";
 
-const verifyUser = async (req: Request, res: Response, next: NextFunction) => {
+const verifyUser = async (req: any, res: Response, next: NextFunction) => {
   try {
     const token = req.cookies.jwt;
 

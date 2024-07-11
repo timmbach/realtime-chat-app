@@ -1,4 +1,4 @@
-import express, { Express, Request, Response } from "express";
+import express from "express";
 import { getMessages, sendMessage } from "../controllers/message.controller";
 import verifyUser from "../middleware/verifyUser";
 

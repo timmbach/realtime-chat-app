@@ -4,13 +4,12 @@ import {
   ReactNode,
   useContext,
   useEffect,
-  useRef,
   useState,
 } from "react";
 import { useAuthContext } from "./AuthContext";
 import io, { Socket } from "socket.io-client";
-import { IUser } from "../types/signup.model";
-import { IConversation } from "../types/conversation.model";
+// import { IUser } from "../types/signup.model";
+// import { IConversation } from "../types/conversation.model";
 
 interface Props {
   children: ReactNode;
